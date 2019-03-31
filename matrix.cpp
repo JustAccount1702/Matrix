@@ -4,7 +4,8 @@
 #include <iostream>
 #include <ctime>
 
-Matrix::Matrix(const char* filepath)
+template <typename T>
+Matrix<T>::Matrix(const char* filepath)
 {
 	std::ifstream input(filepath);
 
@@ -16,45 +17,49 @@ Matrix::Matrix(const char* filepath)
 	if (width <= 0 || length <= 0) 
 		throw std::runtime_error("Bad input");
 	
-	matrix = new int*[length];
+	matrix = new T*[length];
 	for (unsigned i = 0; i < length; ++i)
-		matrix[i] = new int[width];
+		matrix[i] = new T[width];
 
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < width; ++j)
 			input >> matrix[i][j];
 }
 
-Matrix::Matrix(const unsigned length, const unsigned width)
+template <typename T>
+Matrix<T>::Matrix(const unsigned length, const unsigned width)
 {
 	this->length = length;
 	this->width = width;
-	this->matrix = new int*[length];
+	this->matrix = new T*[length];
 	for (unsigned i = 0; i < length; ++i)
-		matrix[i] = new int[width];
+		matrix[i] = new T[width];
 }
 
-Matrix::Matrix(int** matrix, const unsigned length, const unsigned width)
+template <typename T>
+Matrix<T>::Matrix(int** matrix, const unsigned length, const unsigned width)
 {
 	this->matrix = matrix;
 	this->length = length;
 	this->width = width;
 }
 
-Matrix::Matrix(Matrix& other)
+template <typename T>
+Matrix<T>::Matrix(Matrix<T>& other)
 {
 	width = other.width;
 	length = other.length;
-	matrix = new int*[length];
+	matrix = new T*[length];
 	for (unsigned i = 0; i < length; ++i)
-		matrix[i] = new int[width];
+		matrix[i] = new T[width];
 
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < width; ++j)
 			matrix[i][j] = other.matrix[i][j];
 }
 
-Matrix::Matrix(Matrix&& other) noexcept
+template <typename T>
+Matrix<T>::Matrix(Matrix<T>&& other) noexcept
 {
 	matrix = other.matrix;
 	other.matrix = nullptr;
@@ -62,26 +67,29 @@ Matrix::Matrix(Matrix&& other) noexcept
 	length = other.length;
 }
 
-
-Matrix::~Matrix()
+template <typename T>
+Matrix<T>::~Matrix()
 {
 	if (matrix)
 	for (unsigned i = 0; i < length; ++i)
 		delete[] matrix[i];
 }
 
-int Matrix::getValue(const unsigned indL, const unsigned indW) const
+template <typename T>
+T Matrix<T>::getValue(const unsigned indL, const unsigned indW) const
 {
 	return matrix[indL][indW];
 }
 
-int Matrix::setValue(const unsigned indL, const unsigned indW, const int value) const
+template <typename T>
+T Matrix<T>::setValue(const unsigned indL, const unsigned indW, const T value) const
 {
 	matrix[indL][indW] = value;
 	return value;
 }
 
-void Matrix::fillRandom(const unsigned max) const
+template <typename T>
+void Matrix<T>::fillRandom(const unsigned max) const
 {
 	static auto seed = static_cast<unsigned>(time(nullptr));
 	srand(seed++);
@@ -90,27 +98,30 @@ void Matrix::fillRandom(const unsigned max) const
 			matrix[i][j] = rand() % max;
 }
 
-void Matrix::clear() const
+template <typename T>
+void Matrix<T>::clear() const
 {
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < width; ++j)
 			matrix[i][j] = 0;
 }
 
-Matrix Matrix::transpose() const
+template <typename T>
+Matrix<T> Matrix<T>::transpose() const
 {
 	if (length != width)
 	{
 		throw std::runtime_error("Cannot transpose non-square matrix");
 	}
-	const auto result = new Matrix(length, width);
+	const auto result = new Matrix<T>(length, width);
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < i; ++j)
 				std::swap(matrix[i][j], matrix[j][i]);
 	return *result;
 }
 
-std::ostream& operator<<(std::ostream& os, const Matrix& other)
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const Matrix<T>& other)
 {
 	for (unsigned i = 0; i < other.length; ++i)
 	{
@@ -121,7 +132,8 @@ std::ostream& operator<<(std::ostream& os, const Matrix& other)
 	return os;
 }
 
-Matrix& Matrix::operator*(const Matrix& other) const
+template <typename T>
+Matrix<T>& Matrix<T>::operator*(const Matrix<T>& other) const
 {
 	if (width != other.length)
 		throw std::runtime_error("Wrong matrix size");
@@ -136,7 +148,8 @@ Matrix& Matrix::operator*(const Matrix& other) const
 	return *result;
 }
 
-Matrix& Matrix::operator=(const Matrix& other)
+template <typename T>
+Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
 {
 	width = other.width;
 	length = other.length;
@@ -148,7 +161,8 @@ Matrix& Matrix::operator=(const Matrix& other)
 	return *this;
 }
 
-Matrix& Matrix::operator^(const unsigned degree)
+template <typename T>
+Matrix<T>& Matrix<T>::operator^(const unsigned degree)
 {
 	if (width != length)
 		throw std::runtime_error("Wrong matrix size");
@@ -156,17 +170,12 @@ Matrix& Matrix::operator^(const unsigned degree)
 	Matrix* result = new Matrix(*this);
 	for (unsigned z = 1; z < degree; ++z)
 		*result = *result * *this;
-	/*for (unsigned z = 1; z < degree; ++z)
-	{
-		for (unsigned i = 0; i < result->length; ++i)
-			for (unsigned j = 0; j < result->width; ++j)
-				for (unsigned k = 0; k < result->width; ++k)
-					result->matrix[i][j] += matrix[i][k] * result->matrix[k][j];
-	}*/
+
 	return *result;
 }
 
-Matrix& Matrix::operator=(Matrix&& other) noexcept
+template <typename T>
+Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept
 {
 	matrix = other.matrix;
 	other.matrix = nullptr;

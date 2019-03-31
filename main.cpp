@@ -3,9 +3,9 @@
 
 int main()
 {
-	Matrix a(5,5);
-	Matrix b(5, 5);
-	Matrix c("input.txt");
+	Matrix<int> a(5,5);
+	Matrix<int> b(5, 5);
+	const Matrix<int> c("input.txt");
 	a.fillRandom(2);
 	b.fillRandom(2);
 

@@ -1,7 +1,8 @@
 #include <istream>
-class Matrix final
+template <typename T>
+class Matrix
 {
-	int** matrix;
+	T** matrix;
 
 	unsigned length;
 	unsigned width;
@@ -14,8 +15,8 @@ class Matrix final
 	Matrix(Matrix&& other) noexcept;
 	~Matrix();
 
-	int getValue(unsigned indL, unsigned indW) const;
-	int setValue(unsigned indL, unsigned indW, int value) const;
+	T getValue(unsigned indL, unsigned indW) const;
+	T setValue(unsigned indL, unsigned indW, T value) const;
 	void fillRandom(unsigned max = 10) const;
 	void clear() const;
 	Matrix transpose() const;
@@ -23,6 +24,6 @@ class Matrix final
 	friend std::ostream& operator<<(std::ostream& os, const Matrix& other);
 	Matrix& operator*(const Matrix& other) const;
 	Matrix& operator=(const Matrix& other);
-	Matrix& operator^(unsigned degree);
+	Matrix& operator^(const unsigned degree);
 	Matrix& operator=(Matrix&& other) noexcept;
 };
