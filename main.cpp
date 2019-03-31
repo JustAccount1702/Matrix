@@ -9,11 +9,11 @@ int main()
 	a.fillRandom(2);
 	b.fillRandom(2);
 
-	std::cout << "A:" << std::endl << a << std::endl;
+	std::cout << a;/*
 	std::cout << "B:" << std::endl << b << std::endl;
 	std::cout << "C:" << std::endl << c << std::endl;
 	std::cout << "A*B:" << std::endl << a * b << std::endl;
-	std::cout << "C^2:" << std::endl << c*c << std::endl;
+	std::cout << "C^2:" << std::endl << c*c << std::endl;*/
 
 	system("pause");
 	return 0;	
