@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 #include <fstream>
 #include <ctime>
 
@@ -24,7 +25,7 @@ class Matrix
 	void clear() const;
 	Matrix transpose() const;
 
-	friend std::ostream& operator<<(std::ostream& os, const Matrix& other);
+	friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& m);
 	Matrix& operator*(const Matrix& other) const;
 	Matrix& operator=(const Matrix& other);
 	Matrix& operator^(const unsigned degree);
