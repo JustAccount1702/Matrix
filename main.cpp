@@ -4,8 +4,13 @@
 int main()
 {
 	Matrix m("input.txt");
+	std::cout << m;
 
-	//std::cout << m;
 
+	Matrix transposedM = m.transpose();
+	std::cout << transposedM;
+
+
+	system("pause");
 	return 0;	
 }
