@@ -1,19 +1,14 @@
 #include <iostream>
 #include "matrix.h"
+#include "Fractions.h"
 
 int main()
 {
-	Matrix<int> a(5,5);
-	Matrix<int> b(5, 5);
-	const Matrix<int> c("input.txt");
-	a.fillRandom(2);
-	b.fillRandom(2);
+	Matrix<Fraction> mat("input.txt");
 
-	std::cout << a;/*
-	std::cout << "B:" << std::endl << b << std::endl;
-	std::cout << "C:" << std::endl << c << std::endl;
-	std::cout << "A*B:" << std::endl << a * b << std::endl;
-	std::cout << "C^2:" << std::endl << c*c << std::endl;*/
+	std::cout << "Transfer matrix" << std::endl << mat << std::endl;
+	std::cout << "Transfer matrix ^2" << std::endl << (mat^2) << std::endl;
+	std::cout << "Transfer matrix ^3" << std::endl << (mat^3) << std::endl;
 
 	system("pause");
 	return 0;	
