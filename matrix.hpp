@@ -14,7 +14,7 @@ public:
 	Matrix(const char* filepath);
 	Matrix(unsigned length, unsigned width);
 	Matrix(T** matrix, unsigned length, unsigned width);
-	Matrix(Matrix<T>& other);
+	Matrix(const Matrix<T>& other);
 	Matrix(Matrix<T>&& other) noexcept;
 	~Matrix();
 
@@ -80,7 +80,7 @@ Matrix<T>::Matrix(T** matrix, const unsigned length, const unsigned width)
 }
 
 template <typename T>
-Matrix<T>::Matrix(Matrix<T>& other)
+Matrix<T>::Matrix(const Matrix<T>& other)
 {
 	width = other.width;
 	length = other.length;
@@ -193,24 +193,19 @@ Matrix<T> Matrix<T>::appendRight(Matrix<T> other)
 	if (length != other.length)
 		throw std::runtime_error("Bad matrix size");
 
-	Matrix* result = new Matrix(length, width + other.width);
+	Matrix result(length, width + other.width);
 
-	for (unsigned i = 0; i < length; ++i)
-		for (unsigned j = 0; j < width + other.width; ++j)
-			result->matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
+	for (unsigned i = 0; i < result.length; ++i)
+		for (unsigned j = 0; j < result.width; ++j)
+			result.matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
 	
-	return *result;
+	return result;
 }
 
 template<typename T>
 Matrix<T> Matrix<T>::gaussView()
 {
-	Matrix *result = new Matrix(length);
-	result->clear(true);
-
-
-
-	return *result;
+	return Matrix<T>();
 }
 
 template <typename T>
