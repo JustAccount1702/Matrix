@@ -12,7 +12,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10fa91c8-18b8-497b-828f-cfc1c2d9ed67" name="Default Changelist" comment="" />
+    <list default="true" id="10fa91c8-18b8-497b-828f-cfc1c2d9ed67" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +50,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="75" selection-start-line="75" selection-end-line="75" />
+                <state relative-caret-position="346">
+                  <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
                   <folding>
                     <element signature="e#38#57#0" expanded="true" />
                   </folding>
@@ -62,8 +66,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/matrix.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="121">
-                  <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
+                <state relative-caret-position="3298">
+                  <caret line="220" column="1" lean-forward="true" selection-start-line="220" selection-start-column="1" selection-end-line="220" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -86,8 +90,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/test.cpp" />
         <option value="$PROJECT_DIR$/matrix.hpp" />
+        <option value="$PROJECT_DIR$/test.cpp" />
       </list>
     </option>
   </component>
@@ -101,13 +105,28 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Dijkstra_s_algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.scopes" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -121,7 +140,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.test">
+  <component name="RunManager" selected="Application.main">
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Dijkstra_s_algorithm" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Dijkstra_s_algorithm" RUN_TARGET_NAME="main">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -149,6 +168,7 @@
       <updated>1554861562301</updated>
       <workItem from="1554861563646" duration="1197000" />
       <workItem from="1554901366554" duration="6083000" />
+      <workItem from="1554914187510" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1554862276658</created>
@@ -168,18 +188,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7280000" />
+    <option name="totallyTimeSpent" value="9164000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32843137" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32843137" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32843137" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -187,8 +207,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32843137" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015129" side_tool="true" weight="0.32843137" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" visible="true" weight="0.32843137" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" weight="0.32843137" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32843137" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32843137" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -218,22 +239,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/matrix.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3298">
+          <caret line="220" column="1" lean-forward="true" selection-start-line="220" selection-start-column="1" selection-end-line="220" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="346">
+          <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
           <folding>
             <element signature="e#38#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrix.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="105" column="12" selection-start-line="105" selection-start-column="12" selection-end-line="105" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

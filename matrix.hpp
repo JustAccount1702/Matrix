@@ -32,11 +32,11 @@ public:
 	template <typename Y>
 	friend std::ostream& operator<<(std::ostream& os, const Matrix<Y>& m);
 
-	Matrix<T>& operator+(const Matrix<T>& other) const;
-	Matrix<T>& operator*(const Matrix<T>& other) const;
-	Matrix<T>& operator=(const Matrix<T>& other);
-	Matrix<T>& operator^(const int degree);
-	Matrix<T>& operator=(Matrix<T>&& other) noexcept;
+	Matrix<T> operator+(const Matrix<T>& other) const;
+	Matrix<T> operator*(const Matrix<T>& other) const;
+	Matrix<T> operator=(const Matrix<T>& other);
+	Matrix<T> operator^(const int degree);
+	Matrix<T> operator=(Matrix<T>&& other) noexcept;
 };
 
 template <typename T>
@@ -221,7 +221,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
 }
 
 template<typename T>
-Matrix<T> & Matrix<T>::operator+(const Matrix & other) const
+Matrix<T> Matrix<T>::operator+(const Matrix & other) const
 {
 	if (width != other.width || length != other.length)
 		throw std::runtime_error("Wrong matrix size");
@@ -236,7 +236,7 @@ Matrix<T> & Matrix<T>::operator+(const Matrix & other) const
 }
 
 template <typename T>
-Matrix<T>& Matrix<T>::operator*(const Matrix<T>& other) const
+Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) const
 {
 	if (width != other.length)
 		throw std::runtime_error("Wrong matrix size");
@@ -252,7 +252,7 @@ Matrix<T>& Matrix<T>::operator*(const Matrix<T>& other) const
 }
 
 template <typename T>
-Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
+Matrix<T> Matrix<T>::operator=(const Matrix<T>& other)
 {
 	width = other.width;
 	length = other.length;
@@ -265,7 +265,7 @@ Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
 }
 
 template <typename T>
-Matrix<T>& Matrix<T>::operator^(const int degree)
+Matrix<T> Matrix<T>::operator^(const int degree)
 {
 	if (width != length)
 		throw std::runtime_error("Wrong matrix size");
@@ -286,7 +286,7 @@ Matrix<T>& Matrix<T>::operator^(const int degree)
 }
 
 template <typename T>
-Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept
+Matrix<T> Matrix<T>::operator=(Matrix<T>&& other) noexcept
 {
 	matrix = other.matrix;
 	other.matrix = nullptr;
