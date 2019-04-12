@@ -32,11 +32,11 @@ public:
 	template <typename Y>
 	friend std::ostream& operator<<(std::ostream& os, const Matrix<Y>& m);
 
-	Matrix<T> operator+(const Matrix<T>& other) const;
+	Matrix<T>& operator+(const Matrix<T>& other) const;
 	Matrix<T> operator*(const Matrix<T>& other) const;
-	Matrix<T> operator=(const Matrix<T>& other);
-	Matrix<T> operator^(const int degree);
-	Matrix<T> operator=(Matrix<T>&& other) noexcept;
+	Matrix<T>& operator=(const Matrix<T>& other);
+	Matrix<T>& operator^(const int degree);
+	Matrix<T>& operator=(Matrix<T>&& other) noexcept;
 };
 
 template <typename T>
@@ -151,7 +151,7 @@ Matrix<T> Matrix<T>::transpose() const
 	{
 		throw std::runtime_error("Cannot transpose non-square matrix");
 	}
-	Matrix<T> result(*this);
+	Matrix<T> result = *this;
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < i; ++j)
 			std::swap(result.matrix[i][j], result.matrix[j][i]);
@@ -193,19 +193,24 @@ Matrix<T> Matrix<T>::appendRight(Matrix<T> other)
 	if (length != other.length)
 		throw std::runtime_error("Bad matrix size");
 
-	Matrix result(length, width + other.width);
+	Matrix* result = new Matrix(length, width + other.width);
 
-	for (unsigned i = 0; i < result.length; ++i)
-		for (unsigned j = 0; j < result.width; ++j)
-			result.matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
+	for (unsigned i = 0; i < length; ++i)
+		for (unsigned j = 0; j < width + other.width; ++j)
+			result->matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
 	
-	return result;
+	return *result;
 }
 
 template<typename T>
 Matrix<T> Matrix<T>::gaussView()
 {
-	return Matrix<T>();
+	Matrix *result = new Matrix(length);
+	result->clear(true);
+
+
+
+	return *result;
 }
 
 template <typename T>
@@ -221,18 +226,19 @@ std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator+(const Matrix & other) const
+Matrix<T> & Matrix<T>::operator+(const Matrix & other) const
 {
 	if (width != other.width || length != other.length)
 		throw std::runtime_error("Wrong matrix size");
 
-	Matrix<T> result(other);
-	for (unsigned i = 0; i < result.length; ++i)
-		for (unsigned j = 0; j < result.width; ++j)
+	auto result = new Matrix(length, width);
+	*result = other;
+	for (unsigned i = 0; i < result->length; ++i)
+		for (unsigned j = 0; j < result->width; ++j)
 		{
-			result.matrix[i][j] += matrix[i][j];
+			result->matrix[i][j] += matrix[i][j];
 		}
-	return result;
+	return *result;
 }
 
 template <typename T>
@@ -252,7 +258,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) const
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator=(const Matrix<T>& other)
+Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
 {
 	width = other.width;
 	length = other.length;
@@ -265,28 +271,35 @@ Matrix<T> Matrix<T>::operator=(const Matrix<T>& other)
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator^(const int degree)
+Matrix<T>& Matrix<T>::operator^(const int degree)
 {
 	if (width != length)
 		throw std::runtime_error("Wrong matrix size");
 
-	Matrix result(*this);
+	Matrix* result = new Matrix(*this);
 	if (degree == 0)
-		result.clear(true);
+	{
+		result->clear(true);
+		return *result;
+	}
 	if (degree > 0)
+	{
 		for (unsigned z = 1; z < (unsigned)degree; ++z)
-			result = result * *this;
+			*result = *result * *this;
+
+		return *result;
+	}
 	else
 	{
 		/*for (unsigned z = -1; z < abs(degree); ++z)
 			*result = *result / *this;*/
 
+		return *result;
 	}
-	return result;
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator=(Matrix<T>&& other) noexcept
+Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept
 {
 	matrix = other.matrix;
 	other.matrix = nullptr;

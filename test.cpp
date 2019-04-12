@@ -19,6 +19,13 @@ TEST_CASE("Get/Set Value", "Matrix_Tests")
     REQUIRE(m.getValue(1,0) == 3);
     REQUIRE(m.getValue(1,1) == 4);
 }
+TEST_CASE("operator <<", "Matrix_Tests")
+{
+    Matrix<int> m(2, 2);
+    m.fillRandom();
+    std::cout << m << std::endl;
+}
+
 TEST_CASE("Fill random", "Matrix_Tests")
 {
     Matrix<int> m(2, 2);
