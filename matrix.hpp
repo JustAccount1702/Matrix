@@ -139,7 +139,7 @@ void Matrix<T>::clear(bool makeE) const
 	for (unsigned i = 0; i < length; ++i)
 		for (unsigned j = 0; j < width; ++j)
 			matrix[i][j] = 0;
-	if (makeE)
+	if (makeE && width == length)
 		for (unsigned j = 0; j < width; ++j)
 			matrix[j][j] = 1;
 }
