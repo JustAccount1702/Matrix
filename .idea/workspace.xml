@@ -15,6 +15,7 @@
     <list default="true" id="10fa91c8-18b8-497b-828f-cfc1c2d9ed67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matrix.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,10 +44,39 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/matrix.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="169" column="17" lean-forward="true" selection-start-line="169" selection-start-column="17" selection-end-line="169" selection-end-column="17" />
+                <state relative-caret-position="-1005">
+                  <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
                   <folding>
-                    <element signature="e#0#18#0" expanded="true" />
+                    <element signature="e#1080#1519#0" />
+                    <element signature="e#1521#1754#0" />
+                    <element signature="e#1756#1926#0" />
+                    <element signature="e#1928#2251#0" />
+                    <element signature="e#2253#2419#0" />
+                    <element signature="e#2421#2543#0" />
+                    <element signature="e#2545#2668#0" />
+                    <element signature="e#2670#2824#0" />
+                    <element signature="e#2826#3088#0" />
+                    <element signature="e#3090#3345#0" />
+                    <element signature="e#3347#3678#0" />
+                    <element signature="e#3680#4002#0" />
+                    <element signature="e#4004#4077#0" />
+                    <element signature="e#4079#4331#0" />
+                    <element signature="e#4333#4725#0" />
+                    <element signature="e#4727#4864#0" />
+                    <element signature="e#4866#5105#0" />
+                    <element signature="e#5107#5473#0" />
+                    <element signature="e#5536#5616#0" />
+                    <element signature="e#5475#5915#0" />
+                    <element signature="e#6447#6887#0" />
+                    <element signature="e#7164#7257#0" />
+                    <element signature="e#5917#6177#0" />
+                    <element signature="e#6179#6643#0" />
+                    <element signature="e#6543#6620#0" />
+                    <element signature="e#6645#6840#0" />
+                    <element signature="e#8053#8133#0" />
+                    <element signature="e#8172#8289#0" />
+                    <element signature="e#8292#8409#0" />
+                    <element signature="e#8411#8528#0" />
                   </folding>
                 </state>
               </provider>
@@ -55,11 +85,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
+                <state relative-caret-position="135">
                   <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
                 </state>
               </provider>
@@ -68,10 +98,25 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="97">
-                  <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+                <state relative-caret-position="181">
+                  <caret line="147" selection-start-line="147" selection-end-line="147" />
                   <folding>
-                    <element signature="e#38#57#0" expanded="true" />
+                    <element signature="e#0#2#0" />
+                    <element signature="e#171#432#0" />
+                    <element signature="e#473#555#0" />
+                    <element signature="e#597#667#0" />
+                    <element signature="e#702#942#0" />
+                    <element signature="e#982#1167#0" />
+                    <element signature="e#1206#1353#0" />
+                    <element signature="e#1394#1565#0" />
+                    <element signature="e#1607#1909#0" />
+                    <element signature="e#1949#2223#0" />
+                    <element signature="e#2263#2573#0" />
+                    <element signature="e#2613#3012#0" />
+                    <element signature="e#3052#3362#0" />
+                    <element signature="e#3377#3660#0" />
+                    <element signature="e#3377#3687#0" />
+                    <element signature="e#3737#4056#0" />
                   </folding>
                 </state>
               </provider>
@@ -100,6 +145,7 @@
       </list>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="683" />
     <option name="width" value="683" />
@@ -110,20 +156,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Dijkstra_s_algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Matrix" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -132,7 +165,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -146,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.test">
+  <component name="RunManager" selected="CMake Application.main">
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Matrix" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Matrix" RUN_TARGET_NAME="main">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -175,7 +208,8 @@
       <workItem from="1554861563646" duration="1197000" />
       <workItem from="1554901366554" duration="6083000" />
       <workItem from="1554914187510" duration="1884000" />
-      <workItem from="1555087183837" duration="238000" />
+      <workItem from="1555087183837" duration="918000" />
+      <workItem from="1555088163357" duration="2655000" />
     </task>
     <task id="LOCAL-00001" summary="Added tests">
       <created>1554862276658</created>
@@ -191,11 +225,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554913523197</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed incompatability with unisys.h macro on Linux">
+      <created>1555087590861</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555087590862</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9402000" />
+    <option name="totallyTimeSpent" value="12737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -206,7 +247,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32843137" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32736155" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -214,7 +255,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32843137" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015129" side_tool="true" weight="0.32843137" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" weight="0.32843137" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49848714" weight="0.32736155" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32843137" />
       <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32736155" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -227,25 +268,25 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Added tests" />
     <MESSAGE value="Added tests &amp;&amp; Fixed memory leak" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests &amp;&amp; Fixed memory leak" />
+    <MESSAGE value="Fixed incompatability with unisys.h macro on Linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed incompatability with unisys.h macro on Linux" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file:///usr/include/x86_64-linux-gnu/sys/sysmacros.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="195">
+          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.cpp">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="95" column="35" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
-          <folding>
-            <element signature="e#38#57#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -256,19 +297,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/x86_64-linux-gnu/sys/sysmacros.h">
+    <entry file="file://$PROJECT_DIR$/matrix.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+        <state relative-caret-position="-1005">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="e#1080#1519#0" />
+            <element signature="e#1521#1754#0" />
+            <element signature="e#1756#1926#0" />
+            <element signature="e#1928#2251#0" />
+            <element signature="e#2253#2419#0" />
+            <element signature="e#2421#2543#0" />
+            <element signature="e#2545#2668#0" />
+            <element signature="e#2670#2824#0" />
+            <element signature="e#2826#3088#0" />
+            <element signature="e#3090#3345#0" />
+            <element signature="e#3347#3678#0" />
+            <element signature="e#3680#4002#0" />
+            <element signature="e#4004#4077#0" />
+            <element signature="e#4079#4331#0" />
+            <element signature="e#4333#4725#0" />
+            <element signature="e#4727#4864#0" />
+            <element signature="e#4866#5105#0" />
+            <element signature="e#5107#5473#0" />
+            <element signature="e#5536#5616#0" />
+            <element signature="e#5475#5915#0" />
+            <element signature="e#6447#6887#0" />
+            <element signature="e#7164#7257#0" />
+            <element signature="e#5917#6177#0" />
+            <element signature="e#6179#6643#0" />
+            <element signature="e#6543#6620#0" />
+            <element signature="e#6645#6840#0" />
+            <element signature="e#8053#8133#0" />
+            <element signature="e#8172#8289#0" />
+            <element signature="e#8292#8409#0" />
+            <element signature="e#8411#8528#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrix.hpp">
+    <entry file="file://$PROJECT_DIR$/test.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="169" column="17" lean-forward="true" selection-start-line="169" selection-start-column="17" selection-end-line="169" selection-end-column="17" />
+        <state relative-caret-position="181">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#2#0" />
+            <element signature="e#171#432#0" />
+            <element signature="e#473#555#0" />
+            <element signature="e#597#667#0" />
+            <element signature="e#702#942#0" />
+            <element signature="e#982#1167#0" />
+            <element signature="e#1206#1353#0" />
+            <element signature="e#1394#1565#0" />
+            <element signature="e#1607#1909#0" />
+            <element signature="e#1949#2223#0" />
+            <element signature="e#2263#2573#0" />
+            <element signature="e#2613#3012#0" />
+            <element signature="e#3052#3362#0" />
+            <element signature="e#3377#3660#0" />
+            <element signature="e#3377#3687#0" />
+            <element signature="e#3737#4056#0" />
           </folding>
         </state>
       </provider>

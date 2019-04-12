@@ -24,7 +24,7 @@ public:
 	void clear(bool makeE = false) const;
 	Matrix<T> transpose() const;
 	Matrix<T> getMinor(unsigned i, unsigned j);
-	Matrix<T> inverse();// TODO
+	Matrix<T> inverse() const;// TODO
 	T determinat();
 	Matrix<T> appendRight(Matrix<T>);
 	Matrix<T> gaussView();// TODO
@@ -32,11 +32,22 @@ public:
 	template <typename Y>
 	friend std::ostream& operator<<(std::ostream& os, const Matrix<Y>& m);
 
-	Matrix<T> operator+(const Matrix<T>& other) const;
-	Matrix<T> operator*(const Matrix<T>& other) const;
-	Matrix<T>& operator=(const Matrix<T>& other);
+    Matrix<T> operator+(const Matrix<T>& other) const;
+    Matrix<T> operator-(const Matrix<T>& other) const;
+    Matrix<T> operator*(const Matrix<T>& other) const;
+    Matrix<T> operator/(const Matrix<T>& other) const;
+
+    Matrix<T> operator-() const;
+
 	Matrix<T> operator^(const int degree);
-	Matrix<T>& operator=(Matrix<T>&& other) noexcept;
+
+    Matrix<T>& operator=(const Matrix<T>& other);
+    Matrix<T>& operator=(Matrix<T>&& other) noexcept;
+
+    Matrix<T> operator+=(const Matrix<T>& other);
+    Matrix<T> operator-=(const Matrix<T>& other);
+    Matrix<T> operator*=(const Matrix<T>& other);
+    Matrix<T> operator/=(const Matrix<T>& other);
 };
 
 template <typename T>
@@ -171,9 +182,9 @@ Matrix<T> Matrix<T>::getMinor(unsigned i, unsigned j)
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::inverse()
+Matrix<T> Matrix<T>::inverse() const
 {
-	return Matrix();
+	return *this;
 }
 
 template<typename T>
@@ -193,13 +204,13 @@ Matrix<T> Matrix<T>::appendRight(Matrix<T> other)
 	if (length != other.length)
 		throw std::runtime_error("Bad matrix size");
 
-	Matrix* result = new Matrix(length, width + other.width);
+	Matrix result(length, width + other.width);
 
-	for (unsigned i = 0; i < length; ++i)
-		for (unsigned j = 0; j < width + other.width; ++j)
-			result->matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
+	for (unsigned i = 0; i < result.length; ++i)
+		for (unsigned j = 0; j < result.width; ++j)
+			result.matrix[i][j] = (( j < width) ? matrix[i][j] : other.matrix[i][j - width]);
 	
-	return *result;
+	return result;
 }
 
 template<typename T>
@@ -239,6 +250,19 @@ Matrix<T> Matrix<T>::operator+(const Matrix & other) const
 }
 
 template <typename T>
+Matrix<T> Matrix<T>::operator-(const Matrix<T>& other) const
+{
+    if (width != other.width || length != other.length)
+        throw std::runtime_error("Wrong matrix size");
+
+    Matrix<T> result(*this);
+    for (unsigned i = 0; i < result.length; ++i)
+        for (unsigned j = 0; j < result.width; ++j)
+            result.matrix[i][j] -= other.matrix[i][j];
+    return result;
+}
+
+template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) const
 {
 	if (width != other.length)
@@ -252,6 +276,32 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) const
 				result.matrix[i][j] += (matrix[i][k] * other.matrix[k][j]);
 		}
 	return result;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator/(const Matrix<T>& other) const
+{
+	if (width != other.length)
+		throw std::runtime_error("Wrong matrix size");
+	Matrix<T> result(width, other.length);
+	Matrix<T> divisor(other.inverse());
+	result.clear();
+	for (unsigned i = 0; i < result.length; ++i)
+		for (unsigned j = 0; j < result.width; ++j)
+		{
+			for (unsigned k = 0; k < width; ++k)
+				result.matrix[i][j] += (matrix[i][k] * divisor.matrix[k][j]);
+		}
+	return result;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator-() const
+{
+    Matrix<T> result = *this;
+    for (unsigned i = 0; i < length; ++i)
+        for (unsigned j = 0; j < width; ++j)
+            result.matrix[i][j] = -result.matrix[i][j];
 }
 
 template <typename T>
@@ -303,4 +353,29 @@ Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept
 	width = other.width;
 	length = other.length;
 	return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator+=(const Matrix<T>& other)
+{
+    return (*this = *this + other);
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator-=(const Matrix<T>& other)
+{
+    return (*this = *this - other);
+}
+
+
+template <typename T>
+Matrix<T> Matrix<T>::operator*=(const Matrix<T>& other)
+{
+    return (*this = *this * other);
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator/=(const Matrix<T>& other)
+{
+    return (*this = *this / other);
 }

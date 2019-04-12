@@ -71,16 +71,16 @@ TEST_CASE("Determinat", "Matrix_Tests")
 
 TEST_CASE("AppendRight", "Matrix_Tests")
 {
-    Matrix<int> m1(2, 2);
-    Matrix<int> m2(2, 2);
+    Matrix<int> m1(3, 3);
+    Matrix<int> m2(3, 4);
     m1.fillRandom();
     m2.fillRandom();
 
     Matrix<int> m3 = m1.appendRight(m2);
 
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 4; ++j)
-            REQUIRE(m3.getValue(i,j) == ((j < 2)? m1.getValue(i,j) : m2.getValue(i,j - 2)));
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 7; ++j)
+            REQUIRE(m3.getValue(i,j) == ((j < 3)? m1.getValue(i,j) : m2.getValue(i,j - 3)));
 }
 
 TEST_CASE("Operator+", "Matrix_Tests")
@@ -127,4 +127,66 @@ TEST_CASE("Operator^", "Matrix_Tests")
        //for (int j = 0; j < 2; ++j)
             //REQUIRE(m3.getValue(i,j) == (m1.inverse()*m1.inverse()).getValue(i,0));
 
+}
+
+TEST_CASE("Operator+=", "Matrix_Tests")
+{
+    Matrix<int> m1(2, 2);
+    Matrix<int> m2(2, 2);
+    m1.fillRandom();
+    m2.fillRandom();
+
+    Matrix<int> m3 = m1;
+    m3 += m2;
+
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 2; ++j)
+            REQUIRE(m3.getValue(i,j) == m1.getValue(i,j)+m2.getValue(i,j));
+}
+
+TEST_CASE("Operator-=", "Matrix_Tests")
+{
+    Matrix<int> m1(2, 2);
+    Matrix<int> m2(2, 2);
+    m1.fillRandom();
+    m2.fillRandom();
+
+    Matrix<int> m3 = m1;
+    m3 -= m2;
+
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 2; ++j)
+            REQUIRE(m3.getValue(i,j) == m1.getValue(i,j)-m2.getValue(i,j));
+}
+TEST_CASE("Operator*=", "Matrix_Tests")
+{
+    Matrix<int> m1(2, 2);
+    Matrix<int> m2(2, 2);
+    m1.fillRandom();
+    m2.fillRandom();
+
+    Matrix<int> m3 = m1;
+    m3 *= m2;
+
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 2; ++j)
+            REQUIRE(m3.getValue(i,j) == m1.getValue(i,0)*m2.getValue(0,j) + m1.getValue(i,1)*m2.getValue(1,j));
+}
+
+TEST_CASE("Operator/=", "Matrix_Tests")
+{
+    Matrix<int> m1(2, 2);
+    Matrix<int> m2(2, 2);
+    m1.fillRandom();
+    m2.fillRandom();
+
+    Matrix<int> m3 = m1;
+    m3 /= m2;
+
+    Matrix<int> m4 = m2.inverse();
+
+
+    for (int i = 0; i < 2; ++i)
+        for (int j = 0; j < 2; ++j)
+            REQUIRE(m3.getValue(i,j) == m1.getValue(i,0)*m4.getValue(0,j) + m1.getValue(i,1)*m4.getValue(1,j));
 }
