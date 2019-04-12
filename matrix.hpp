@@ -32,10 +32,10 @@ public:
 	template <typename Y>
 	friend std::ostream& operator<<(std::ostream& os, const Matrix<Y>& m);
 
-	Matrix<T>& operator+(const Matrix<T>& other) const;
+	Matrix<T> operator+(const Matrix<T>& other) const;
 	Matrix<T> operator*(const Matrix<T>& other) const;
 	Matrix<T>& operator=(const Matrix<T>& other);
-	Matrix<T>& operator^(const int degree);
+	Matrix<T> operator^(const int degree);
 	Matrix<T>& operator=(Matrix<T>&& other) noexcept;
 };
 
@@ -226,19 +226,16 @@ std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
 }
 
 template<typename T>
-Matrix<T> & Matrix<T>::operator+(const Matrix & other) const
+Matrix<T> Matrix<T>::operator+(const Matrix & other) const
 {
 	if (width != other.width || length != other.length)
 		throw std::runtime_error("Wrong matrix size");
 
-	auto result = new Matrix(length, width);
-	*result = other;
-	for (unsigned i = 0; i < result->length; ++i)
-		for (unsigned j = 0; j < result->width; ++j)
-		{
-			result->matrix[i][j] += matrix[i][j];
-		}
-	return *result;
+	Matrix<T> result(*this);
+	for (unsigned i = 0; i < result.length; ++i)
+		for (unsigned j = 0; j < result.width; ++j)
+			result.matrix[i][j] += other.matrix[i][j];
+	return result;
 }
 
 template <typename T>
@@ -271,30 +268,30 @@ Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
 }
 
 template <typename T>
-Matrix<T>& Matrix<T>::operator^(const int degree)
+Matrix<T> Matrix<T>::operator^(const int degree)
 {
 	if (width != length)
 		throw std::runtime_error("Wrong matrix size");
 
-	Matrix* result = new Matrix(*this);
+	Matrix<T> result(*this);
 	if (degree == 0)
 	{
-		result->clear(true);
-		return *result;
+		result.clear(true);
+		return result;
 	}
 	if (degree > 0)
 	{
 		for (unsigned z = 1; z < (unsigned)degree; ++z)
-			*result = *result * *this;
+			result = result * *this;
 
-		return *result;
+		return result;
 	}
 	else
 	{
 		/*for (unsigned z = -1; z < abs(degree); ++z)
 			*result = *result / *this;*/
 
-		return *result;
+		return result;
 	}
 }
 
