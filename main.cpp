@@ -13,6 +13,7 @@ int main()
     Matrix<Fraction> result = baseVector;
 	for (int i = 0; i < 40; ++i)
 		result = baseVector * mat;
-	std::cout << result << std::endl;
-	return 0;	
+    std::cout << result << std::endl;
+    std::cout << result.convert(double()) << std::endl;
+	return 0;
 }

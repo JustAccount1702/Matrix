@@ -18,8 +18,8 @@ public:
 	Matrix(Matrix<T>&& other) noexcept;
 	~Matrix();
 
-	T getValue(unsigned indL, unsigned indW) const;
-	T setValue(unsigned indL, unsigned indW, T value) const;
+	inline T getValue(unsigned indL, unsigned indW) const;
+	inline T setValue(unsigned indL, unsigned indW, T value) const;
 	void fillRandom(unsigned max = 10) const;
 	void clear(bool makeE = false) const;
 	Matrix<T> transpose() const;
@@ -28,6 +28,9 @@ public:
 	T determinat();
 	Matrix<T> appendRight(Matrix<T>);
 	Matrix<T> gaussView();// TODO
+
+    template <typename Y>
+    Matrix<Y> convert(Y) const;
 
 	template <typename Y>
 	friend std::ostream& operator<<(std::ostream& os, const Matrix<Y>& m);
@@ -48,6 +51,7 @@ public:
     Matrix<T> operator-=(const Matrix<T>& other);
     Matrix<T> operator*=(const Matrix<T>& other);
     Matrix<T> operator/=(const Matrix<T>& other);
+
 };
 
 template <typename T>
@@ -227,6 +231,8 @@ Matrix<T> Matrix<T>::gaussView()
 	return *result;
 }
 
+
+
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
 {
@@ -381,4 +387,17 @@ template <typename T>
 Matrix<T> Matrix<T>::operator/=(const Matrix<T>& other)
 {
     return (*this = *this / other);
+}
+
+template <typename T>
+template <typename Y>
+Matrix<Y> Matrix<T>::convert(Y) const
+{
+    Matrix<Y> result(length, width);
+
+    for (unsigned i = 0; i < length; ++i)
+        for (unsigned j = 0; j < width; ++j)
+            result.setValue(i, j ,(Y)this->matrix[i][j]);
+
+    return result;
 }
