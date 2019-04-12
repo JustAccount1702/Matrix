@@ -23,7 +23,7 @@ public:
 	void fillRandom(unsigned max = 10) const;
 	void clear(bool makeE = false) const;
 	Matrix<T> transpose() const;
-	Matrix<T> minor(unsigned i, unsigned j);
+	Matrix<T> getMinor(unsigned i, unsigned j);
 	Matrix<T> inverse();// TODO
 	T determinat();
 	Matrix<T> appendRight(Matrix<T>);
@@ -159,15 +159,15 @@ Matrix<T> Matrix<T>::transpose() const
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::minor(unsigned i, unsigned j)
+Matrix<T> Matrix<T>::getMinor(unsigned i, unsigned j)
 {
-	Matrix<T> minor(length - 1, width - 1);
+	Matrix<T> minorMat(length - 1, width - 1);
 
 	for (unsigned k = 0; k < length; ++k)
 		for (unsigned h = 0; h < width; ++h)
 			if (h != j && k != i)
-				minor.matrix[(k < i) ? k : k - 1][(h < j) ? h : h - 1] = matrix[k][h];
-	return minor;
+				minorMat.matrix[(k < i) ? k : k - 1][(h < j) ? h : h - 1] = matrix[k][h];
+	return minorMat;
 }
 
 template<typename T>
@@ -183,7 +183,7 @@ T Matrix<T>::determinat()
 		return matrix[0][0];
 	T result = 0;
 	for (unsigned i = 0; i < width; ++i)
-		result += ((i % 2) ? -1 : 1)*matrix[0][i]*minor(0, i).determinat();
+		result += ((i % 2) ? -1 : 1)*matrix[0][i]*getMinor(0, i).determinat();
 	return result;
 }
 

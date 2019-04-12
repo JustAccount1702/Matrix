@@ -53,11 +53,11 @@ TEST_CASE("Transpose", "Matrix_Tests")
         REQUIRE(m1.getValue(i/2,i%2) == m2.getValue(i%2, i/2));
 }
 
-TEST_CASE("Minor", "Matrix_Tests")
+TEST_CASE("GetMinor", "Matrix_Tests")
 {
     Matrix<int> m1(2, 2);
     m1.fillRandom();
-    Matrix<int> minor = m1.minor(0,0);
+    Matrix<int> minor = m1.getMinor(0,0);
     REQUIRE(minor.getValue(0,0) == m1.getValue(1,1));
 }
 
