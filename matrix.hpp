@@ -56,7 +56,10 @@ Matrix<T>::Matrix(const char* filepath)
 	std::ifstream input(filepath);
 
 	if (!input.is_open())
-		return;
+	{
+        throw std::runtime_error("Cannot open file");
+        return;
+    }
 
 	input >> length;
 	input >> width;
@@ -267,7 +270,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) const
 {
 	if (width != other.length)
 		throw std::runtime_error("Wrong matrix size");
-	Matrix<T> result(width, other.length);
+	Matrix<T> result(length, other.width);
 	result.clear();
 	for (unsigned i = 0; i < result.length; ++i)
 		for (unsigned j = 0; j < result.width; ++j)
