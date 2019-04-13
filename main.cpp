@@ -6,14 +6,17 @@ int main()
 {
 	Matrix<Fraction> mat("input.txt");
 
-	std::cout << "Инфинитезальная матрица: " << std::endl << mat << std::endl;
-    Matrix<Fraction> baseVector(1,4);
-	for (int i = 0; i < 4; ++i)
-		baseVector.setValue(0, i, Fraction(1,4));
-    Matrix<Fraction> result = baseVector;
+	std::cout << "Инфинитезальная матрица: " << std::endl <<( mat.convert(double())^100) << std::endl;
+    Matrix<double> baseVector(1,4);
+
+    baseVector.setValue(0,0,0);
+    baseVector.setValue(0,0,0.53);
+    baseVector.setValue(0,0,0);
+    baseVector.setValue(0,0,0.47);
+
+    Matrix<double> result = baseVector;
 	for (int i = 0; i < 40; ++i)
-		result = baseVector * mat;
+		result = baseVector * mat.convert(double());
     std::cout << "Вектор распределения вероятностей 40 степени: " << std::endl << result << std::endl;
-    std::cout << result.convert(double()) << std::endl;
 	return 0;
 }

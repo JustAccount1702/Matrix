@@ -1,5 +1,6 @@
 #include <ostream>
 #include <fstream>
+#include <iomanip>
 #include <ctime>
 
 template <typename T>
@@ -239,7 +240,9 @@ std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
 	for (unsigned i = 0; i < m.length; ++i)
 	{
 		for (unsigned j = 0; j < m.width; ++j)
-			os << m.matrix[i][j] << ' ';
+				if (typeid(T) == typeid(double))
+			os << std::setw(9)<< std::setprecision(2) << m.matrix[i][j] << ' ';
+			else os << m.matrix[i][j] << ' ';
 		os << std::endl;
 	}
 	return os;

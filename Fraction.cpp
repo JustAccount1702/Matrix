@@ -24,7 +24,7 @@ Fraction::Fraction()
 	sign = true;
 }
 
-Fraction::Fraction(int numer, int denum)
+Fraction::Fraction(long numer,long denum)
 {
 	if (denum == 0)
 		throw std::runtime_error("Divivsion by zero");
@@ -42,7 +42,7 @@ void Fraction::normalize()
 		denominator = 1;
 		return;
 	}
-	int normizer = gcf(numerator, denominator);
+	long normizer = gcf(numerator, denominator);
 	numerator /= normizer;
 	denominator /= normizer;
 }
@@ -79,7 +79,7 @@ Fraction Fraction::operator+(const Fraction& other) const
 	Fraction result = *this;
 	if (result.denominator == other.denominator)
 	{
-		int temp = ((sign) ? 1 : -1)*result.numerator + ((other.sign) ? 1 : -1)*other.numerator;
+		long temp = ((sign) ? 1 : -1)*result.numerator + ((other.sign) ? 1 : -1)*other.numerator;
 		result.sign = (((temp >= 0) ? 1 : -1)*((sign) ? 1 : -1)*((other.sign) ? 1 : -1) == -1) ? false : true;
 		result.numerator = abs(temp);
 		result.denominator = this->denominator;
@@ -90,7 +90,7 @@ Fraction Fraction::operator+(const Fraction& other) const
 
 		result.numerator *= otherC.denominator;
 		otherC.numerator *= result.denominator;
-		int temp = (sign ? 1 : -1)*result.numerator + (other.sign ? 1 : -1)*otherC.numerator;
+		long temp = (sign ? 1 : -1)*result.numerator + (other.sign ? 1 : -1)*otherC.numerator;
 		result.sign = (((temp >= 0) ? 1 : -1)*((sign) ? 1 : -1)*((other.sign) ? 1 : -1) == -1) ? false : true;
 		result.numerator = abs(temp);
 		result.denominator *= otherC.denominator;
@@ -104,7 +104,7 @@ Fraction Fraction::operator-(const Fraction & other) const
 	Fraction result = *this;
 	if (result.denominator == other.denominator)
 	{
-		int temp = ((sign)?1:-1)*result.numerator - ((other.sign) ? 1 : -1)*other.numerator;
+		long temp = ((sign)?1:-1)*result.numerator - ((other.sign) ? 1 : -1)*other.numerator;
 		result.sign = (((temp >= 0) ? 1 : -1)*((sign) ? 1 : -1)*((other.sign) ? 1 : -1) == -1) ? false : true;
 		result.numerator = abs(temp);
 		result.denominator = this->denominator;
@@ -115,7 +115,7 @@ Fraction Fraction::operator-(const Fraction & other) const
 
 		result.numerator *= otherC.denominator;
 		otherC.numerator *= result.denominator;
-		int temp = ((sign) ? 1 : -1)*result.numerator - ((other.sign) ? 1 : -1)*otherC.numerator;
+		long temp = ((sign) ? 1 : -1)*result.numerator - ((other.sign) ? 1 : -1)*otherC.numerator;
 		result.sign = (((temp >= 0) ? 1 : -1)*((sign) ? 1 : -1)*((other.sign) ? 1 : -1) == -1) ? true : false;
 		result.numerator = abs(temp);
 		result.denominator *= otherC.denominator;
@@ -148,7 +148,7 @@ Fraction Fraction::operator=(const Fraction & other)
 	return *this;
 }
 
-Fraction Fraction::operator=(const int other)
+Fraction Fraction::operator=(const long other)
 {
 	return (*this = Fraction(other, 1));
 }
@@ -231,7 +231,7 @@ std::istream & operator>>(std::istream & is, Fraction & f)
 
 	f.numerator = 0;
 	f.denominator = 0;
-	f.sign = !(input[0] == '-');
+	f.sign = (input[0] != '-');
 
 	unsigned i = (f.sign ? 0 : 1);
 	char c;

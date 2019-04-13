@@ -3,13 +3,13 @@
 class Fraction
 {
 	bool sign;
-	unsigned numerator;
-	unsigned denominator;
+	unsigned long numerator;
+	unsigned long denominator;
 
 	void normalize();
 public:
 	Fraction();
-	Fraction(int a, int b);
+	Fraction(long a,long b);
 
 	Fraction inverse() const;
 
@@ -23,7 +23,7 @@ public:
 	Fraction operator*(const Fraction& other) const;
 	Fraction operator/(const Fraction& other) const;
 	Fraction operator=(const Fraction& other);
-	Fraction operator=(const int other);
+	Fraction operator=(const long other);
 
 	Fraction operator-();
 
